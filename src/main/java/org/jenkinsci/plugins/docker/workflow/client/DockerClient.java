@@ -183,7 +183,7 @@ public class DockerClient {
         LaunchResult result;
         result = launch(launchEnv, false, "rm", "-f", containerId);
         if (result.getStatus() != 0) {
-            throw new IOException(String.format("Failed to rm container '%s'.", containerId));
+            LOGGER.severe(String.format("BIGCAT-1547 REMEDIATION: Failed to rm container '%s'. Received '%s' from docker daemon.", containerId, result.getErr()));
         }
     }
 
